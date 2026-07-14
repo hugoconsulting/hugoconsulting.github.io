@@ -43,8 +43,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:74px}
 .navlinks{display:flex;gap:36px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500}
 .navlinks a{color:var(--muted);transition:color .2s}
 .navlinks a:hover,.navlinks a.active{color:var(--navy)}
-.navcta{border:1px solid var(--navy);color:var(--navy);padding:9px 18px;border-radius:3px;font-size:12px;transition:all .2s}
-.navcta:hover{background:var(--navy);color:#fff}
+.navcta{background:var(--navy);color:#fff;border:1px solid var(--navy);padding:9px 18px;border-radius:3px;font-size:12px;transition:all .2s}
+.navcta:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
 .lang{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:2px;align-items:center}
 .lang a{padding:2px 4px;transition:color .2s}
 .lang a.on{color:var(--navy);font-weight:600}
@@ -55,6 +55,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:74px}
 .hero{padding:104px 0 88px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;margin-bottom:24px}
+.hero .eyebrow{font-size:36px}
 .hero h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(38px,5vw,60px);line-height:1.03;letter-spacing:-.025em;color:var(--navy);margin-bottom:24px}
 .hero h1 em{font-style:normal;color:var(--blue)}
 .hero p.lead{font-size:18px;color:var(--muted);max-width:46ch;margin-bottom:36px}
@@ -79,19 +80,19 @@ section.block{padding:96px 0}
 .sec-head p{margin-top:18px;font-size:17px;color:var(--muted)}
 
 .band{background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.band .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
 .band h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.02em;color:var(--navy)}
 .band p.body{font-size:17px;color:var(--muted);margin-bottom:18px}
 .stat-row{display:flex;gap:48px;margin-top:20px}
 .stat b{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:600;color:var(--navy);display:block;line-height:1;letter-spacing:-.02em}
 .stat span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.03em;margin-top:10px;display:block}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.card{background:var(--white);padding:36px 30px;transition:background .25s}
-.card:hover{background:var(--wash)}
-.card .num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:22px;letter-spacing:.05em}
-.card h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;color:var(--navy);margin-bottom:12px;letter-spacing:-.01em}
-.card p{font-size:14.5px;color:var(--muted)}
+.dark{background:var(--navy-deep);border-top:1px solid var(--line)}
+.dark .eyebrow{color:var(--blue-bright)}
+.dark h2{color:#fff}
+.dark .sec-head p{color:rgba(255,255,255,.75)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--wash)}
 
 .cta{background:var(--wash);border-top:1px solid var(--line)}
 .cta-inner{text-align:center;max-width:620px;margin:0 auto}
@@ -108,7 +109,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:60px 0 32p
 .copyright{font-family:'JetBrains Mono',monospace;padding-top:24px;font-size:12px;color:rgba(255,255,255,.4)}
 
 @media(max-width:880px){
-  .hero-grid,.band .intro-grid{grid-template-columns:1fr;gap:48px}
+  .hero-grid,.intro-grid{grid-template-columns:1fr;gap:48px}
+  .hero .eyebrow{font-size:26px}
   .hero-img{max-width:520px}
   .cards{grid-template-columns:1fr}
   .navlinks{display:none}
@@ -141,9 +143,6 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:60px 0 32p
       <div class="eyebrow">SAP × AI</div>
       <h1>Let's put AI agents<br>to work in your <em>SAP</em> world.</h1>
       <p class="lead">We build the agents, run the platform behind them, and wire it all into the SAP systems your team already relies on. Deep engineering, friendly delivery.</p>
-      <div class="btnrow">
-        <a href="#contact" class="btn btn-primary">Let's talk</a>
-      </div>
     </div>
     <div class="hero-img">
       <img src="hugo-top-image.png" alt="Synchronize business and technology — HUGO Consulting">
@@ -169,29 +168,30 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:60px 0 32p
 </section>
 
 <section class="block">
+  <div class="wrap intro-grid">
+    <div>
+      <div class="eyebrow">// what we do</div>
+      <h2>SAP-focused AI agent development.</h2>
+    </div>
+    <div>
+      <p class="body">We build AI agents and generative-AI apps that get real SAP work done — accounting suggestions, invoice OCR, anomaly detection — grounded in your data through MCP.</p>
+      <p class="body">And we deliver the whole stack around them: SAP BTP, Cloud Identity (IAS/IPS), authentication, and operations, plus the integration that connects AI to your processes across S/4HANA and BTP.</p>
+      <div class="stat-row">
+        <div class="stat"><b>33</b><span>SAP operation tools via MCP</span></div>
+        <div class="stat"><b>ABAP × BTP</b><span>on-premise / RISE / cloud</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">// what we do</div>
-      <h2>SAP-focused AI agent development & platform services</h2>
-      <p>One service, three parts that fit together — the agents themselves, the platform they run on, and the integration that makes them genuinely useful.</p>
+      <div class="eyebrow">// what we have</div>
+      <h2>Cutting-edge AI agent technology — running for real.</h2>
+      <p>We build and open-source sap-mcp-server, an MCP server for operating SAP safely from AI. It lets general MCP clients such as Claude Code, Codex, and Gemini CLI work with ABAP and BTP services, with layered security controls over access scope, landscape, and authentication.</p>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="num">[ 01 ]</div>
-        <h3>AI Agent Development</h3>
-        <p>Agents and generative-AI apps that get real SAP work done — accounting suggestions, invoice OCR, anomaly detection — grounded in your data through MCP.</p>
-      </div>
-      <div class="card">
-        <div class="num">[ 02 ]</div>
-        <h3>Platform Services</h3>
-        <p>The foundation underneath: SAP BTP, Cloud Identity (IAS/IPS), authentication, and the operational backbone that keeps agents running smoothly.</p>
-      </div>
-      <div class="card">
-        <div class="num">[ 03 ]</div>
-        <h3>Implementation & Integration</h3>
-        <p>Requirements, design, and integration across S/4HANA and BTP — connecting AI to your real processes without the disruption.</p>
-      </div>
-    </div>
+    <a href="https://github.com/hugoconsulting/sap-mcp-server" target="_blank" rel="noopener" class="btn btn-light">GitHub — sap-mcp-server ↗</a>
   </div>
 </section>
 
@@ -213,7 +213,6 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:60px 0 32p
       <div class="foot-col">
         <h4>Navigate</h4>
         <a href="index-en.html">Home</a>
-        <a href="#contact">Contact</a>
       </div>
       <div class="foot-col">
         <h4>Say hello</h4>
