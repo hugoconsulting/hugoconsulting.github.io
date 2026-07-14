@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUGO Consulting — AI Agents for the SAP Enterprise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14294B;
+  --navy-deep:#0D1B32;
+  --blue:#2F6DB4;
+  --blue-bright:#4C9BE0;
+  --white:#FFFFFF;
+  --wash:#F6F8FB;
+  --ink:#101B30;
+  --muted:#5A6577;
+  --line:#E6E9EE;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--white);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--navy)}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:36px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500}
+.navlinks a{color:var(--muted);transition:color .2s}
+.navlinks a:hover,.navlinks a.active{color:var(--navy)}
+.navcta{border:1px solid var(--navy);color:var(--navy);padding:9px 18px;border-radius:3px;font-size:12px;transition:all .2s}
+.navcta:hover{background:var(--navy);color:#fff}
+.lang{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:2px;align-items:center}
+.lang a{padding:2px 4px;transition:color .2s}
+.lang a.on{color:var(--navy);font-weight:600}
+.lang a:hover{color:var(--navy)}
+.lang span{opacity:.4}
+.menubtn{display:none;background:none;border:0;font-size:22px;color:var(--navy);cursor:pointer}
+
+.hero{padding:104px 0 88px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;margin-bottom:24px}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(38px,5vw,60px);line-height:1.03;letter-spacing:-.025em;color:var(--navy);margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:46ch;margin-bottom:36px}
+.btnrow{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:'JetBrains Mono',monospace;padding:14px 26px;border-radius:3px;font-size:13px;font-weight:500;transition:all .2s;display:inline-block}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-deep)}
+.btn-ghost{border:1px solid var(--line);color:var(--navy)}
+.btn-ghost:hover{border-color:var(--navy)}
+
+.hero-img{
+  aspect-ratio:1280/731;border-radius:6px;
+  background:var(--wash);border:1px solid var(--line);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+section.block{padding:96px 0}
+.sec-head{max-width:640px;margin-bottom:52px}
+.sec-head h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.02em;color:var(--navy)}
+.sec-head p{margin-top:18px;font-size:17px;color:var(--muted)}
+
+.band{background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.band h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.02em;color:var(--navy)}
+.band p.body{font-size:17px;color:var(--muted);margin-bottom:18px}
+.stat-row{display:flex;gap:48px;margin-top:20px}
+.stat b{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:600;color:var(--navy);display:block;line-height:1;letter-spacing:-.02em}
+.stat span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.03em;margin-top:10px;display:block}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.card{background:var(--white);padding:36px 30px;transition:background .25s}
+.card:hover{background:var(--wash)}
+.card .num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:22px;letter-spacing:.05em}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;color:var(--navy);margin-bottom:12px;letter-spacing:-.01em}
+.card p{font-size:14.5px;color:var(--muted)}
+
+.cta{background:var(--wash);border-top:1px solid var(--line)}
+.cta-inner{text-align:center;max-width:620px;margin:0 auto}
+.cta h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,3.6vw,42px);color:var(--navy);letter-spacing:-.02em;margin-bottom:18px}
+.cta p{font-size:17px;color:var(--muted);margin-bottom:32px}
+
+footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:60px 0 32px}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-logo{font-family:'Space Grotesk',sans-serif;font-size:20px;color:#fff;font-weight:700;margin-bottom:14px;letter-spacing:-.02em}
+.foot-logo span{color:var(--blue-bright)}
+.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px}
+.foot-col a,.foot-col p{display:block;font-size:14px;color:rgba(255,255,255,.72);margin-bottom:9px;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.copyright{font-family:'JetBrains Mono',monospace;padding-top:24px;font-size:12px;color:rgba(255,255,255,.4)}
+
+@media(max-width:880px){
+  .hero-grid,.band .intro-grid{grid-template-columns:1fr;gap:48px}
+  .hero-img{max-width:520px}
+  .cards{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .menubtn{display:block}
+  .wrap{padding:0 24px}
+  section.block{padding:68px 0}
+  .hero{padding:64px 0 56px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo">HUGO<span>_</span>Consulting</a>
+      <div class="navlinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="service.html">Service</a>
+        <a href="#contact" class="navcta">Say hello</a>
+        <span class="lang"><a href="index.html" class="on">EN</a><span>/</span><a href="index-ja.html">JP</a></span>
+      </div>
+      <button class="menubtn" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">SAP × AI</div>
+      <h1>Let's put AI agents<br>to work in your <em>SAP</em> world.</h1>
+      <p class="lead">We build the agents, run the platform behind them, and wire it all into the SAP systems your team already relies on. Deep engineering, friendly delivery.</p>
+      <div class="btnrow">
+        <a href="service.html" class="btn btn-primary">See what we do</a>
+        <a href="#contact" class="btn btn-ghost">Let's talk</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="hero.png" alt="Synchronize business and technology — HUGO Consulting">
+    </div>
+  </div>
+</section>
+
+<section class="block band">
+  <div class="wrap intro-grid">
+    <div>
+      <div class="eyebrow">// who we are</div>
+      <h2>A consultancy that actually ships.</h2>
+    </div>
+    <div>
+      <p class="body">We've spent years helping teams move through the full arc of enterprise change — from first requirements and architecture all the way to a stable, running system. Hands-on SAP engineering, with a delivery style people enjoy working with.</p>
+      <p class="body">Right now, we're focused on one thing we love: getting AI agents to do useful work inside SAP landscapes, safely and at scale.</p>
+      <div class="stat-row">
+        <div class="stat"><b>20+</b><span>years in enterprise IT</span></div>
+        <div class="stat"><b>SAP</b><span>BTP · S/4HANA · Identity</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">// what we do</div>
+      <h2>SAP-focused AI agent development & platform services</h2>
+      <p>One service, three parts that fit together — the agents themselves, the platform they run on, and the integration that makes them genuinely useful.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="num">[ 01 ]</div>
+        <h3>AI Agent Development</h3>
+        <p>Agents and generative-AI apps that get real SAP work done — accounting suggestions, invoice OCR, anomaly detection — grounded in your data through MCP.</p>
+      </div>
+      <div class="card">
+        <div class="num">[ 02 ]</div>
+        <h3>Platform Services</h3>
+        <p>The foundation underneath: SAP BTP, Cloud Identity (IAS/IPS), authentication, and the operational backbone that keeps agents running smoothly.</p>
+      </div>
+      <div class="card">
+        <div class="num">[ 03 ]</div>
+        <h3>Implementation & Integration</h3>
+        <p>Requirements, design, and integration across S/4HANA and BTP — connecting AI to your real processes without the disruption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block cta" id="contact">
+  <div class="wrap cta-inner">
+    <h2>Got an SAP + AI idea? We'd love to hear it.</h2>
+    <p>Whether you're sketching a first agent or standardizing a whole platform, drop us a line — we're friendly, and we start with your requirements.</p>
+    <a href="mailto:info@hugoconsulting.com" class="btn btn-primary">info@hugoconsulting.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col" style="max-width:280px">
+        <div class="foot-logo">HUGO<span>_</span>Consulting</div>
+        <p>SAP-focused AI agent development and platform services.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="service.html">Service</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Say hello</h4>
+        <a href="mailto:info@hugoconsulting.com">info@hugoconsulting.com</a>
+        <p>HUGO Consulting Inc.</p>
+      </div>
+    </div>
+    <div class="copyright">© 2002–2026 HUGO Consulting Inc. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.menubtn').addEventListener('click',function(){
+  var n=document.querySelector('.navlinks');
+  n.style.display = n.style.display==='flex' ? 'none' : 'flex';
+  n.style.position='absolute';n.style.top='74px';n.style.right='24px';
+  n.style.flexDirection='column';n.style.background='#fff';
+  n.style.padding='20px 26px';n.style.border='1px solid var(--line)';n.style.borderRadius='6px';
+});
+</script>
+</body>
+</html>
